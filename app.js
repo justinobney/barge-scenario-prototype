@@ -32,6 +32,18 @@ $(document).ready(function(){
 
 angular.module('draggableBoxes', ['ngDragDrop']);
 
+angular.module('draggableBoxes', []).filter('thirds', function() {
+  return function(items, position) {
+  	var filtered = [];
+    angular.forEach(items, function(item, idx) {
+      if(idx % 3 == position) {
+        filtered.push(item);
+      }
+    });
+    return filtered;
+  };
+});
+
 (function(){
 	var scenarioController = function($scope, $log){
 		$scope.layout = {
@@ -248,6 +260,7 @@ angular.module('draggableBoxes', ['ngDragDrop']);
 				]
 			}
 		};
+
 		$scope.comments = [
 			{ id: 1, name: 'Aaron Landry', comment: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' },
 			{ id: 2, name: 'Justin Obney', comment: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' }
