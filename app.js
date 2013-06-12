@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 angular.module('draggableBoxes', ['ngDragDrop']);
 
-angular.module('draggableBoxes', []).filter('thirds', function() {
+angular.module('draggableBoxes').filter('thirds', function() {
   return function(items, position) {
   	var filtered = [];
     angular.forEach(items, function(item, idx) {
