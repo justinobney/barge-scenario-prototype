@@ -8,15 +8,15 @@
 }
 
 .ui-layout-west {
-	background-color: #333;
+    background-color: #333;
 }
 
 .ui-layout-north {
-	padding-top:27px;
+    padding-top:27px;
 }
 
 #content .span4:nth-child(3n + 1), .new-row {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .workspace-area {
@@ -58,17 +58,18 @@
 }
 
 .barge {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	display: inline-block;
-	padding: 2px 4px;
-	font-size: 11.844px;
-	font-weight: bold;
-	line-height: 14px;
-	color: #FFF;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	white-space: nowrap;
-	vertical-align: baseline;
-	background-color: #F89406;
+    margin-right: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 2px 4px;
+    font-size: 11.844px;
+    font-weight: bold;
+    line-height: 14px;
+    color: #FFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #F89406;
 }
