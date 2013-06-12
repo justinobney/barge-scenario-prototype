@@ -1,0 +1,128 @@
+<!doctype html>
+<html ng-app="draggableBoxes" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="layout-default.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Bootstrap Panel</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div id="container" ng-controller="ScenarioController">
+
+        <div class="ui-layout-north"></div>
+
+        <div class="ui-layout-center hidden" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.workSpace.workAreas">
+        <div id="content">
+          <div class="row-fluid">
+            <div class="span4 workspace-container" ng-repeat="workArea in layout.workSpace.workAreas" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
+              <div class="workspace-area">
+                <h3>{{workArea.title}}</h3>
+                <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
+                  <ul>
+                    <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
+                      <div class="row-fluid">
+                        <div class="span1">
+                          <i class="icon-move"></i>
+                        </div>
+                        <div class="span4">
+                          <div class="label boat">{{unit.boat}}</div>
+                        </div>
+                        <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
+                          <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="ui-layout-west" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.dock.workAreas">
+          <div class="well">
+            <div class="row-fluid">
+              <div class="workspace-container" ng-repeat="workArea in layout.dock.workAreas" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.dock.workAreas">
+                <div class="workspace-area">
+                  <h3>{{workArea.title}}</h3>
+                  <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
+                    <ul>
+                      <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
+                        <div class="row-fluid">
+                          <div class="span1">
+                            <i class="icon-move"></i>
+                          </div>
+                          <div class="span4">
+                            <div class="label boat">{{unit.boat}}</div>
+                          </div>
+                          <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
+                            <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-layout-east">
+          <div class="row-fluid">
+            <h2>Comments</h2>
+            <div class="span12">
+              <textarea class="input-block-level" ng-model="commentBox"></textarea>
+              <a href="#" class="btn btn-primary pull-right" ng-click="addComment()">Add Comment</a>
+              <div class="clearfix"></div>
+              <hr>
+              <div ng-repeat="comment in comments">
+                <span class="badge">{{comment.name}}</span>
+                <p>{{comment.comment}}</p>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script src="angular-dragdrop.min.js"></script>
+
+    <!--
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-resource.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.0/underscore.string.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    -->
+    <script src="jquery.layout-latest.js"></script>
+    <script src="app.js"></script>
+</html>
