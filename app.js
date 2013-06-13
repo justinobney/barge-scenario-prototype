@@ -260,6 +260,14 @@ angular.module('draggableBoxes').filter('thirds', function() {
             { id: 2, name: 'Justin Obney', comment: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' }
         ];
 
+        $scope.handleDragStart = function(class){
+            console.log(class);
+        };
+
+        $scope.handleDragStop = function(class){
+            console.log(class);
+        };
+
         $scope.addComment = function(){
             if ($scope.commentBox) {
                 var newId = _.max($scope.comments, function(comment){ return comment.id; }) + 1;
