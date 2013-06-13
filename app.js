@@ -12,16 +12,36 @@ $(document).ready(function(){
     // NOW create the layout
     myLayout = $('#container').layout({
         defaults: {
-               fxName:               "slide"
-            ,  fxSpeed:               "slow"
-            ,  spacing_closed:        14
+               fxName:              "slide"
+            ,  fxSpeed:             "slow"
+            ,  spacing_closed:      14
             ,  spacing_open:        14
         },
-        north__spacing_open: 0
+        north__spacing_open: 0,
+        south__initClosed:    true
     });
 
     myLayout.sizePane('east', 250);
     myLayout.sizePane('west', 350);
+    myLayout.sizePane('south', 350);
+
+    var handleDragStart = function(evt){
+        evt.stopPropagation();
+
+        var el = $(this);
+        console.log(el);
+        var objectType = el.data('object-type');
+        $('body').addClass('dragging-' + objectType);
+    };
+
+    var handleDragStop = function(evt){
+        evt.stopPropagation();
+        $('body').removeClass();
+    };
+
+    jQuery(document).on('dragstart', '.barge, .unit, .workspace-container', handleDragStart);
+
+    jQuery(document).on('drop', handleDragStop);
 });
 
 angular.module('draggableBoxes', ['ngDragDrop']);
@@ -260,14 +280,6 @@ angular.module('draggableBoxes').filter('thirds', function() {
             { id: 2, name: 'Justin Obney', comment: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo' }
         ];
 
-        $scope.handleDragStart = function(class){
-            console.log(class);
-        };
-
-        $scope.handleDragStop = function(class){
-            console.log(class);
-        };
-
         $scope.addComment = function(){
             if ($scope.commentBox) {
                 var newId = _.max($scope.comments, function(comment){ return comment.id; }) + 1;
@@ -278,6 +290,26 @@ angular.module('draggableBoxes').filter('thirds', function() {
             } else {
                 alert("No comment! That's kinda silly..");
             }
+        }
+
+        $scope.syntaxHighlight = function(json) {
+            json = JSON.stringify(json, null, 2);
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
         }
     };
 

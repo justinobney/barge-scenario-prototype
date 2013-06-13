@@ -33,60 +33,14 @@
           <div id="content">
             <div class="row-fluid">
               <div class="span4">
-                <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:0" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
+                <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:0" data-drag="true"
+                  data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
                   <div class="workspace-area">
                     <h3>{{workArea.title}}</h3>
                     <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
                       <ul>
-                        <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
-                          <div class="row-fluid">
-                            <div class="span1">
-                              <i class="icon-move"></i>
-                            </div>
-                            <div class="span4">
-                              <div class="label boat">{{unit.boat}}</div>
-                            </div>
-                            <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                              <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:1" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
-                  <div class="workspace-area">
-                    <h3>{{workArea.title}}</h3>
-                    <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
-                      <ul>
-                        <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
-                          <div class="row-fluid">
-                            <div class="span1">
-                              <i class="icon-move"></i>
-                            </div>
-                            <div class="span4">
-                              <div class="label boat">{{unit.boat}}</div>
-                            </div>
-                            <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                              <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:2" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
-                  <div class="workspace-area">
-                    <h3>{{workArea.title}}</h3>
-                    <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
-                      <ul>
-                        <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
+                        <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
+                        data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
                           <div class="row-fluid">
                             <div class="span1">
                               <i class="icon-move"></i>
@@ -96,7 +50,61 @@
                             </div>
                             <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
                               <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
-                                jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
+                                data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:1" data-drag="true"
+                  data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
+                  <div class="workspace-area">
+                    <h3>{{workArea.title}}</h3>
+                    <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
+                      <ul>
+                        <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
+                        data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
+                          <div class="row-fluid">
+                            <div class="span1">
+                              <i class="icon-move"></i>
+                            </div>
+                            <div class="span4">
+                              <div class="label boat">{{unit.boat}}</div>
+                            </div>
+                            <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
+                              <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:2" data-drag="true"
+                  data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
+                  <div class="workspace-area">
+                    <h3>{{workArea.title}}</h3>
+                    <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
+                      <ul>
+                        <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
+                        data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
+                          <div class="row-fluid">
+                            <div class="span1">
+                              <i class="icon-move"></i>
+                            </div>
+                            <div class="span4">
+                              <div class="label boat">{{unit.boat}}</div>
+                            </div>
+                            <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
+                              <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                             </div>
                           </div>
                         </li>
@@ -112,12 +120,14 @@
         <div class="ui-layout-west" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.dock.workAreas">
           <div class="well">
             <div class="row-fluid">
-              <div class="workspace-container" ng-repeat="workArea in layout.dock.workAreas" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.dock.workAreas">
+              <div class="workspace-container" ng-repeat="workArea in layout.dock.workAreas" data-drag="true" data-jqyoui-options
+                data-object-type="workspace" jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.dock.workAreas">
                 <div class="workspace-area">
                   <h3>{{workArea.title}}</h3>
                   <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
                     <ul>
-                      <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
+                      <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
+                      data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
                         <div class="row-fluid">
                           <div class="span1">
                             <i class="icon-move"></i>
@@ -126,7 +136,8 @@
                             <div class="label boat">{{unit.boat}}</div>
                           </div>
                           <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                            <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
+                            <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                            data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                           </div>
                         </div>
                       </li>
@@ -153,6 +164,10 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="ui-layout-south">
+          <pre ng-bind-html-unsafe="syntaxHighlight(layout)"></pre>
         </div>
 
     </div>
