@@ -23,12 +23,6 @@
             </ul>
             <ul class="nav pull-right">
               <li>
-                <a href="#" ng-click="saveVersion()">Save</a>
-              </li>
-              <li>
-                <a href="#" ng-click="loadVersion()">Load</a>
-              </li>
-              <li>
                 <a href="#" ng-click="resetVersion()">Reset</a>
               </li>
             </ul>
@@ -44,84 +38,28 @@
           <div class="panel-content">
             <div id="content">
               <div class="row-fluid">
-                <div class="span4">
-                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:0" data-drag="true"
+                <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas" data-drag="true"
                     data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
-                    <div class="workspace-area">
-                      <h3><i class="icon-move icon-white"></i> {{workArea.title}}</h3>
-                      <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
-                        <ul>
-                          <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
-                          data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
-                            <div class="row-fluid">
-                              <div class="span1">
-                                <i class="icon-move"></i>
-                              </div>
-                              <div class="span4">
-                                <div class="label boat">{{unit.boat}}</div>
-                              </div>
-                              <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
-                                  data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
-                              </div>
+                  <div class="workspace-area">
+                    <h3><i class="icon-move icon-white"></i> {{workArea.title}}</h3>
+                    <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
+                      <ul>
+                        <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
+                        data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
+                          <div class="row-fluid">
+                            <div class="span1">
+                              <i class="icon-move"></i>
                             </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="span4">
-                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:1" data-drag="true"
-                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
-                    <div class="workspace-area">
-                      <h3><i class="icon-move icon-white"></i> {{workArea.title}}</h3>
-                      <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
-                        <ul>
-                          <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
-                          data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
-                            <div class="row-fluid">
-                              <div class="span1">
-                                <i class="icon-move"></i>
-                              </div>
-                              <div class="span4">
-                                <div class="label boat">{{unit.boat}}</div>
-                              </div>
-                              <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
-                                  data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
-                              </div>
+                            <div class="span4">
+                              <div class="label boat">{{unit.boat}}</div>
                             </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="span4">
-                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:2" data-drag="true"
-                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.workSpace.workAreas">
-                    <div class="workspace-area">
-                      <h3><i class="icon-move icon-white"></i> {{workArea.title}}</h3>
-                      <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
-                        <ul>
-                          <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
-                          data-object-type="unit" jqyoui-draggable="{animate:false, index: $index}" ng-model="workArea.units">
-                            <div class="row-fluid">
-                              <div class="span1">
-                                <i class="icon-move"></i>
-                              </div>
-                              <div class="span4">
-                                <div class="label boat">{{unit.boat}}</div>
-                              </div>
-                              <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
-                                  data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
-                              </div>
+                            <div class="span7" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
+                              <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                             </div>
-                          </li>
-                        </ul>
-                      </div>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -201,6 +139,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script src="angular-dragdrop.min.js"></script>
     <script src="localStorageModule.js"></script>
+    <script src="jquery.isotope.min.js"></script>
 
     <!--
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
