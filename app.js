@@ -1,4 +1,3 @@
-
 "use strict";
 
 var myLayout;
@@ -63,34 +62,29 @@ angular.module('draggableBoxes').filter('thirds', function () {
 (function () {
     var scenarioController = function ($scope, localStorageService) {
         var original = {
-            dock: {
-                workAreas: [{
-                    "id": 3,
-                    "title": "Compuamerica",
-                    "units": [{
-                        "boat": "Compuamerica",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }, {
+            "dock": {
+                "workAreas": [{
                     "id": 4,
-                    "title": "iSkyvaco",
+                    "title": "Not Working",
                     "units": [{
-                        "boat": "iSkyvaco",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
+                        "boat": "Fred",
+                        "barges": []
                     }]
                 }, {
-                    "id": 5,
-                    "title": "Teratopia",
+                    "id": 2,
+                    "title": "New Construction",
                     "units": [{
-                        "boat": "Teratopia",
+                        "boat": "Charlotte",
+                        "barges": []
+                    }, {
+                        "boat": "Dudley",
+                        "barges": []
+                    }]
+                }, {
+                    "id": 2,
+                    "title": "Unavailable Storage Barges",
+                    "units": [{
+                        "boat": "Megan",
                         "barges": [{
                             "name": "barge 1"
                         }, {
@@ -99,45 +93,9 @@ angular.module('draggableBoxes').filter('thirds', function () {
                     }]
                 }, {
                     "id": 1,
-                    "title": "iQualcar",
+                    "title": "Chevron",
                     "units": [{
-                        "boat": "iQualcar",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }, {
-                    "id": 2,
-                    "title": "Fibrotouch",
-                    "units": [{
-                        "boat": "Fibrotouch",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }]
-            },
-            workSpace: {
-                workAreas: [{
-                    "id": 1,
-                    "title": "iQualcar",
-                    "units": [{
-                        "boat": "iQualcar",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }, {
-                    "id": 2,
-                    "title": "Fibrotouch",
-                    "units": [{
-                        "boat": "Fibrotouch",
+                        "boat": "Cathy",
                         "barges": [{
                             "name": "barge 1"
                         }, {
@@ -146,53 +104,9 @@ angular.module('draggableBoxes').filter('thirds', function () {
                     }]
                 }, {
                     "id": 3,
-                    "title": "Compuamerica",
+                    "title": "Plains",
                     "units": [{
-                        "boat": "Compuamerica",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }, {
-                    "id": 4,
-                    "title": "iSkyvaco",
-                    "units": [{
-                        "boat": "iSkyvaco",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }, {
-                    "id": 5,
-                    "title": "Teratopia",
-                    "units": [{
-                        "boat": "Teratopia",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }, {
-                    "id": 1,
-                    "title": "iQualcar",
-                    "units": [{
-                        "boat": "iQualcar",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }]
-                    }]
-                }, {
-                    "id": 2,
-                    "title": "Fibrotouch",
-                    "units": [{
-                        "boat": "Fibrotouch",
+                        "boat": "Albert",
                         "barges": [{
                             "name": "barge 1"
                         }, {
@@ -201,11 +115,107 @@ angular.module('draggableBoxes').filter('thirds', function () {
                     }]
                 }]
             },
-            id: 1
-        };
+            "workSpace": {
+                "workAreas": [{
+                    "id": 5,
+                    "title": "Valero",
+                    "units": [{
+                        "boat": "Austin",
+                        "barges": [{
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 2"
+                        }]
+                    }]
+                }, {
+                    "id": 3,
+                    "title": "Spot",
+                    "units": [{
+                        "boat": "Ryan",
+                        "barges": [{
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 2"
+                        }]
+                    }]
+                }, {
+                    "id": 2,
+                    "title": "Saltwater",
+                    "units": [{
+                        "boat": "Geneveve",
+                        "barges": [{
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 2"
+                        }, {
+                            "name": "barge 2"
+                        }]
+                    }]
+                }, {
+                    "id": 4,
+                    "title": "Citco",
+                    "units": [{
+                        "boat": "Marry",
+                        "barges": [{
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 2"
+                        }, {
+                            "name": "barge 2"
+                        }, {
+                            "name": "barge 1"
+                        }]
+                    }]
+                }, {
+                    "id": 5,
+                    "title": "Nigeria",
+                    "units": [{
+                        "boat": "Emily",
+                        "barges": [{
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 2"
+                        }, {
+                            "name": "barge 3"
+                        }]
+                    }]
+                }, {
+                    "id": 1,
+                    "title": "Shell",
+                    "units": [{
+                        "boat": "Francis",
+                        "barges": [{
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 2"
+                        }, {
+                            "name": "barge 2"
+                        }, {
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 4"
+                        }, {
+                            "name": "barge 1"
+                        }]
+                    }]
+                }, {
+                    "id": 1,
+                    "title": "Working Storage Barges",
+                    "units": [{
+                        "boat": "Jane P",
+                        "barges": [{
+                            "name": "barge 1"
+                        }, {
+                            "name": "barge 2"
+                        }]
+                    }]
+                }]
+            },
+            "id": 1
+        }
 
 
-        $scope.$watch('layout',function(){
+        $scope.$watch('layout', function () {
             $scope.saveVersion();
         }, true);
 
@@ -220,11 +230,11 @@ angular.module('draggableBoxes').filter('thirds', function () {
         }];
 
         $scope.saveVersion = function () {
-            localStorageService.add('layout',JSON.stringify($scope.layout));
+            localStorageService.add('layout', JSON.stringify($scope.layout));
         };
 
-        $scope.loadVersion = function(){
-            if (localStorageService.get('layout')){
+        $scope.loadVersion = function () {
+            if (localStorageService.get('layout')) {
                 $scope.layout = JSON.parse(localStorageService.get('layout'));
             } else {
                 $scope.layout = original;
@@ -232,7 +242,7 @@ angular.module('draggableBoxes').filter('thirds', function () {
             $scope.layout = JSON.parse(localStorageService.get('layout'));
         };
 
-        $scope.resetVersion = function(){
+        $scope.resetVersion = function () {
             $scope.layout = original;
         };
 
