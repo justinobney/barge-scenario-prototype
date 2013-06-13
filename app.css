@@ -7,6 +7,15 @@
   display: none !important;
 }
 
+html, body {
+    background: #DDD;
+}
+
+#container {
+    margin-top: 40px;
+    padding-top: 15px;
+}
+
 .ui-layout-west {
     background-color: #333;
 }

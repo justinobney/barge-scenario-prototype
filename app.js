@@ -17,7 +17,6 @@ $(document).ready(function () {
             spacing_closed: 14,
             spacing_open: 14
         },
-        north__spacing_open: 0,
         south__initClosed: true,
         togglerLength_open: 150,
         togglerLength_closed: 150
