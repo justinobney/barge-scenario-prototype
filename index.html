@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="layout-default.css">
   <link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body ng-controller="ScenarioController">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -21,11 +21,19 @@
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
             </ul>
+            <ul class="nav pull-right">
+              <li>
+                <a href="#" ng-click="saveVersion()">Save</a>
+              </li>
+              <li>
+                <a href="#" ng-click="loadVersion()">Load</a>
+              </li>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-    <div id="container" ng-controller="ScenarioController" ng-cloak>
+    <div id="container" ng-cloak>
 
         <div class="ui-layout-north"></div>
 
@@ -189,11 +197,11 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script src="angular-dragdrop.min.js"></script>
+    <script src="localStorageModule.js"></script>
 
     <!--
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-resource.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.0/underscore.string.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
