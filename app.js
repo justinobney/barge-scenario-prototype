@@ -204,6 +204,12 @@ angular.module('draggableBoxes').filter('thirds', function () {
             id: 1
         };
 
+        if (localStorageService.get('layout')){
+            $scope.layout = JSON.parse(localStorageService.get('layout'));
+        } else {
+            $scope.layout = original;
+        }
+
         $scope.$watch('layout',function(){
             $scope.saveVersion();
         }, true);
@@ -223,11 +229,7 @@ angular.module('draggableBoxes').filter('thirds', function () {
         };
 
         $scope.loadVersion = function(){
-            if (localStorageService.get('layout')){
-                $scope.layout = JSON.parse(localStorageService.get('layout'));
-            } else {
-                $scope.layout = original;
-            }
+            $scope.layout = JSON.parse(localStorageService.get('layout'));
         };
 
         $scope.resetVersion = function(){
@@ -273,8 +275,6 @@ angular.module('draggableBoxes').filter('thirds', function () {
                 return '<span class="' + cls + '">' + match + '</span>';
             });
         };
-
-        $scope.loadVersion();
     };
 
     scenarioController.$inject = ['$scope', 'localStorageService'];
