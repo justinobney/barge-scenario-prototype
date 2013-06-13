@@ -210,6 +210,10 @@ angular.module('draggableBoxes').filter('thirds', function () {
             $scope.layout = original;
         }
 
+        $scope.$watch('layout',function(){
+            $scope.saveVersion();
+        }, true);
+
         $scope.comments = [{
             id: 1,
             name: 'Aaron Landry',
