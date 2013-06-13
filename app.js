@@ -232,6 +232,10 @@ angular.module('draggableBoxes').filter('thirds', function () {
             $scope.layout = JSON.parse(localStorageService.get('layout'));
         };
 
+        $scope.resetVersion = function(){
+            $scope.layout = original;
+        };
+
         $scope.addComment = function () {
             if ($scope.commentBox) {
                 var newId = _.max($scope.comments, function (comment) {
