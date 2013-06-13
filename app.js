@@ -18,7 +18,9 @@ $(document).ready(function(){
             ,  spacing_open:        14
         },
         north__spacing_open: 0,
-        south__initClosed:    true
+        south__initClosed:    true,
+        togglerLength_open: 150,
+        togglerLength_closed: 150
     });
 
     myLayout.sizePane('east', 250);
