@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body ng-controller="ScenarioController">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar">
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -20,6 +20,9 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#" onclick="$('.ui-draggable').draggable('enable');">Enable Drag</a></li>
+              <li><a href="#" onclick="$('.ui-draggable').draggable('disable');">Disable Drag</a></li>
             </ul>
             <ul class="nav pull-right">
               <li>

@@ -12,7 +12,6 @@ html, body {
 }
 
 #container {
-    margin-top: 40px;
     padding-top: 0;
 }
 
@@ -135,3 +134,68 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: red; }
+
+.navbar {
+    margin-bottom: 10px;
+}
+
+.navbar .divider-vertical {
+    height: 40px;
+    margin: 0 9px;
+    border-right: 1px solid #005C25;
+    border-left: 1px solid #008139;
+}
+
+.navbar-inner {
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #116B51;
+    background-image: -moz-linear-gradient(top, #1C785D, #01573E);
+    background-image: -ms-linear-gradient(top, #1C785D, #01573E);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1C785D), to(#01573E));
+    background-image: -webkit-linear-gradient(top, #1C785D, #01573E);
+    background-image: -o-linear-gradient(top, #1C785D, #01573E);
+    background-image: linear-gradient(top, #1C785D, #01573E);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c785d', endColorstr='#01573e', GradientType=0);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1);
+}
+
+.navbar .brand {
+    float: left;
+    display: block;
+    padding: 8px 20px 12px;
+    margin-left: -20px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
+    color: #FFF;
+    text-shadow: none
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #01573E;
+}
+
+.navbar .nav > li > a {
+    float: none;
+    padding: 9px 10px 11px;
+    line-height: 19px;
+    color: #FFF;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar .nav > li > a:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: #FFF;
+    text-decoration: none;
+}
