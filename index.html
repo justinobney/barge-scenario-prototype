@@ -38,13 +38,13 @@
     </div>
     <div id="container" ng-cloak>
 
-        <div class="ui-layout-center hidden" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.workSpace.workAreas">
+        <div class="ui-layout-center hidden">
           <div class="panel-content">
             <div id="content">
               <div class="row-fluid">
-                <div class="span4">
-                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:0" data-drag="true"
-                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workAreas">
+                <div class="span4" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.workSpace.workArea1">
+                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workArea1" data-drag="true"
+                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workArea1">
                     <div class="workspace-area">
                       <h3><i class="icon-move icon-white"></i> {{workArea.title}}</h3>
                       <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
@@ -69,9 +69,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="span4">
-                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:1" data-drag="true"
-                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workAreas">
+                <div class="span4" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.workSpace.workArea2">
+                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workArea2" data-drag="true"
+                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workArea2">
                     <div class="workspace-area">
                       <h3><i class="icon-move icon-white"></i> {{workArea.title}}</h3>
                       <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
@@ -96,9 +96,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="span4">
-                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workAreas | thirds:2" data-drag="true"
-                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workAreas">
+                <div class="span4" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.workSpace.workArea3">
+                  <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workArea3" data-drag="true"
+                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workArea3">
                     <div class="workspace-area">
                       <h3><i class="icon-move icon-white"></i> {{workArea.title}}</h3>
                       <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
@@ -175,7 +175,7 @@
             <div class="row-fluid">
               <div class="span12">
                 <div ng-repeat="comment in comments">
-                  <span class="badge">{{comment.name}}</span>
+                  <span class="badge">{{comment.name}}</span> <small> - 8:35 A.M.</small>
                   <p>{{comment.comment}}</p>
                   <hr>
                 </div>

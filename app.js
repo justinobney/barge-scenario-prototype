@@ -19,12 +19,18 @@ $(document).ready(function () {
         },
         south__initClosed: true,
         togglerLength_open: 150,
-        togglerLength_closed: 150
+        togglerLength_closed: 150,
+        onload_end: function(){
+            var minHeight = parseInt($('.ui-layout-center').height() * 0.95);
+            $('#content .span4.ui-droppable').css('min-height', minHeight + 'px');
+        }
     });
 
     myLayout.sizePane('east', 250);
     myLayout.sizePane('west', 350);
     myLayout.sizePane('south', 350);
+
+    $(window).unload(function(){ layoutState.save('myLayout') });
 
     var handleDragStart = function (evt) {
         evt.stopPropagation();
@@ -62,153 +68,163 @@ angular.module('draggableBoxes').filter('thirds', function () {
     var scenarioController = function ($scope, localStorageService) {
         var original = {
             "dock": {
-                "workAreas": [{
-                    "id": 4,
-                    "title": "Not Working",
-                    "units": [{
-                        "boat": "Fred",
-                        "barges": []
-                    }]
-                }, {
-                    "id": 2,
-                    "title": "New Construction",
-                    "units": [{
-                        "boat": "Charlotte",
-                        "barges": []
+                "workAreas": [
+                    {
+                        "id": 4,
+                        "title": "Not Working",
+                        "units": [{
+                            "boat": "Fred",
+                            "barges": []
+                        }]
                     }, {
-                        "boat": "Dudley",
-                        "barges": []
-                    }]
-                }, {
-                    "id": 2,
-                    "title": "Unavailable Storage Barges",
-                    "units": [{
-                        "boat": "Megan",
-                        "barges": [{
-                            "name": "barge 1"
+                        "id": 2,
+                        "title": "New Construction",
+                        "units": [{
+                            "boat": "Charlotte",
+                            "barges": []
                         }, {
-                            "name": "barge 2"
+                            "boat": "Dudley",
+                            "barges": []
                         }]
-                    }]
-                }, {
-                    "id": 1,
-                    "title": "Chevron",
-                    "units": [{
-                        "boat": "Cathy",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
+                    }, {
+                        "id": 2,
+                        "title": "Unavailable Storage Barges",
+                        "units": [{
+                            "boat": "Megan",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }]
                         }]
-                    }]
-                }, {
-                    "id": 3,
-                    "title": "Plains",
-                    "units": [{
-                        "boat": "Albert",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
+                    }, {
+                        "id": 1,
+                        "title": "Chevron",
+                        "units": [{
+                            "boat": "Cathy",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }]
                         }]
-                    }]
-                }]
+                    }, {
+                        "id": 3,
+                        "title": "Plains",
+                        "units": [{
+                            "boat": "Albert",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }]
+                        }]
+                    }
+                ]
             },
             "workSpace": {
-                "workAreas": [{
-                    "id": 5,
-                    "title": "Valero",
-                    "units": [{
-                        "boat": "Austin",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
+                "workArea1": [
+                    {
+                        "id": 5,
+                        "title": "Valero",
+                        "units": [{
+                            "boat": "Austin",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }]
                         }]
-                    }]
-                }, {
-                    "id": 3,
-                    "title": "Spot",
-                    "units": [{
-                        "boat": "Ryan",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
+                    }, {
+                        "id": 3,
+                        "title": "Spot",
+                        "units": [{
+                            "boat": "Ryan",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }]
                         }]
-                    }]
-                }, {
-                    "id": 2,
-                    "title": "Saltwater",
-                    "units": [{
-                        "boat": "Geneveve",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }, {
-                            "name": "barge 2"
+                    }
+                ],
+                "workArea2": [
+                    {
+                        "id": 2,
+                        "title": "Saltwater",
+                        "units": [{
+                            "boat": "Geneveve",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }, {
+                                "name": "barge 2"
+                            }]
                         }]
-                    }]
-                }, {
-                    "id": 4,
-                    "title": "Citco",
-                    "units": [{
-                        "boat": "Marry",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }, {
-                            "name": "barge 2"
-                        }, {
-                            "name": "barge 1"
+                    }, {
+                        "id": 4,
+                        "title": "Citco",
+                        "units": [{
+                            "boat": "Marry",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }, {
+                                "name": "barge 2"
+                            }, {
+                                "name": "barge 1"
+                            }]
                         }]
-                    }]
-                }, {
-                    "id": 5,
-                    "title": "Nigeria",
-                    "units": [{
-                        "boat": "Emily",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }, {
-                            "name": "barge 3"
+                    }, {
+                        "id": 5,
+                        "title": "Nigeria",
+                        "units": [{
+                            "boat": "Emily",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }, {
+                                "name": "barge 3"
+                            }]
                         }]
-                    }]
-                }, {
-                    "id": 1,
-                    "title": "Shell",
-                    "units": [{
-                        "boat": "Francis",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
-                        }, {
-                            "name": "barge 2"
-                        }, {
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 4"
-                        }, {
-                            "name": "barge 1"
+                    }
+                ],
+                "workArea3": [
+                    {
+                        "id": 1,
+                        "title": "Shell",
+                        "units": [{
+                            "boat": "Francis",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }, {
+                                "name": "barge 2"
+                            }, {
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 4"
+                            }, {
+                                "name": "barge 1"
+                            }]
                         }]
-                    }]
-                }, {
-                    "id": 1,
-                    "title": "Working Storage Barges",
-                    "units": [{
-                        "boat": "Jane P",
-                        "barges": [{
-                            "name": "barge 1"
-                        }, {
-                            "name": "barge 2"
+                    }, {
+                        "id": 1,
+                        "title": "Working Storage Barges",
+                        "units": [{
+                            "boat": "Jane P",
+                            "barges": [{
+                                "name": "barge 1"
+                            }, {
+                                "name": "barge 2"
+                            }]
                         }]
-                    }]
-                }]
+                    }
+                ]
             },
             "id": 1
         }
