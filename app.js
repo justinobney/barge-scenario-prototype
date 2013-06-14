@@ -2,6 +2,8 @@
 
 var myLayout;
 
+var io_location = 'http://jobney-socket-test.nodejitsu.com:80';
+var socket = io.connect(io_location);
 
 $(document).ready(function () {
 
@@ -17,6 +19,22 @@ $(document).ready(function () {
             spacing_closed: 14,
             spacing_open: 14
         },
+        west: {
+            onopen: function(panel){
+                socket.emit('open-panel', panel);
+            },
+            onclose: function(panel){
+                socket.emit('close-panel', panel);
+            }
+        },
+        east: {
+            onopen: function(panel){
+                socket.emit('open-panel', panel);
+            },
+            onclose: function(panel){
+                socket.emit('close-panel', panel);
+            }
+        },
         south__initClosed: true,
         togglerLength_open: 150,
         togglerLength_closed: 150,
@@ -29,6 +47,14 @@ $(document).ready(function () {
     myLayout.sizePane('east', 250);
     myLayout.sizePane('west', 350);
     myLayout.sizePane('south', 350);
+
+    socket.on('open-panel', function(data){
+        myLayout.open(panel);
+    });
+
+    socket.on('close-panel', function(data){
+        myLayout.close(panel);
+    });
 
     $(window).unload(function(){ layoutState.save('myLayout') });
 
@@ -48,6 +74,7 @@ $(document).ready(function () {
     jQuery(document).on('dragstart', '.barge, .unit, .workspace-container', handleDragStart);
 
     jQuery(document).on('drop', handleDragStop);
+
 });
 
 angular.module('draggableBoxes', ['ngDragDrop', 'LocalStorageModule']);
@@ -229,7 +256,6 @@ angular.module('draggableBoxes').filter('thirds', function () {
             "id": 1
         }
 
-
         $scope.$watch('layout', function () {
             $scope.saveVersion();
         }, true);
@@ -244,8 +270,19 @@ angular.module('draggableBoxes').filter('thirds', function () {
             comment: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo'
         }];
 
+        // Socket.io stuff here...
+
+        socket.on('data-update', function(data){
+            var data = angular.copy(angular.fromJson(data));
+            $scope.$apply(function(){
+                $scope.layout = data;
+            });
+        });
+        // End Socket.io
+
         $scope.saveVersion = function () {
             localStorageService.add('layout', JSON.stringify($scope.layout));
+            socket.emit('data', JSON.stringify(angular.copy($scope.layout)));
         };
 
         $scope.loadVersion = function () {
