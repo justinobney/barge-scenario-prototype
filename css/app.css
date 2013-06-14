@@ -1,0 +1,201 @@
+/*
+  Allow angular.js to be loaded in body, hiding cloaked elements until
+  templates compile.  The !important is important given that there may be
+  other selectors that are more specific or come later and might alter display.
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+html, body {
+    background: #DDD;
+}
+
+#container {
+    padding-top: 0;
+}
+
+.ui-layout-west {
+    background-color: #333;
+}
+
+.ui-layout-north {
+    padding-top:27px;
+}
+
+#content .span4:nth-child(3n + 1), .new-row {
+    margin-left: 0;
+}
+
+.workspace-area {
+    box-sizing: border-box;
+    border: solid 2px #333;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: #FFF;
+}
+
+.dock .workspace-area {
+    border: solid 2px #5E5EFF;
+}
+
+.dock .workspace-area h3 {
+    background: #5E5EFF
+}
+.workspace-area h3 {
+    padding: 0 5px;
+    text-align: center;
+    color: #FFF;
+    background: #333;
+    margin: 0;
+}
+
+.unit-container {
+    min-height: 75px;
+}
+
+.unit-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.unit-container ul li {
+    padding: 5px;
+    border-bottom: solid 1px;
+}
+
+.unit-container ul li:last-child {
+    border-bottom: none;
+}
+
+.boat {
+    width: 90%;
+}
+
+.barge {
+    margin-right: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 2px 4px;
+    font-size: 11.844px;
+    font-weight: bold;
+    line-height: 14px;
+    color: #FFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #F89406;
+}
+
+.dragging-workspace .ui-droppable, .dragging-workspace .ui-droppable {
+    background: #FFFFE0;
+}
+.dragging-unit .unit-container, .dragging-barge .unit-container .ui-droppable {
+    border: dashed 1px !important;
+    margin: 2px;
+    background: #FFFFE0;
+    border-radius: 5px;
+}
+
+.workspace-area h3 .icon-move {
+    float: left;
+    margin-top: 12px;
+}
+
+.icon-move, .barge {
+    cursor: move;
+}
+
+.ui-layout-pane .panel-content {
+    padding: 10px;
+}
+
+.ui-layout-pane { /* all 'panes' */
+    padding: 0;
+}
+
+.comment-form {
+    background: #333;
+    color: #FFF;
+    padding: 15px;
+}
+
+#content .span4.ui-droppable {
+    padding-bottom: 100px;
+}
+
+
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
+.navbar {
+    margin-bottom: 10px;
+}
+
+.navbar .divider-vertical {
+    height: 40px;
+    margin: 0 9px;
+    border-right: 1px solid #005C25;
+    border-left: 1px solid #008139;
+}
+
+.navbar-inner {
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #116B51;
+    background-image: -moz-linear-gradient(top, #1C785D, #01573E);
+    background-image: -ms-linear-gradient(top, #1C785D, #01573E);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1C785D), to(#01573E));
+    background-image: -webkit-linear-gradient(top, #1C785D, #01573E);
+    background-image: -o-linear-gradient(top, #1C785D, #01573E);
+    background-image: linear-gradient(top, #1C785D, #01573E);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c785d', endColorstr='#01573e', GradientType=0);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1);
+}
+
+.navbar .brand {
+    float: left;
+    display: block;
+    padding: 8px 20px 12px;
+    margin-left: -20px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
+    color: #FFF;
+    text-shadow: none
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #01573E;
+}
+
+.navbar .nav > li > a {
+    float: none;
+    padding: 9px 10px 11px;
+    line-height: 19px;
+    color: #FFF;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar .nav > li > a:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: #FFF;
+    text-decoration: none;
+}

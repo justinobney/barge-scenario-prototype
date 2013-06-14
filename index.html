@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="layout-default.css">
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="css/layout-default.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 <body ng-controller="ScenarioController">
     <div class="navbar">
@@ -18,15 +18,13 @@
           </button>
           <a class="brand" href="#">Settoon Towing</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <ul class="nav"  ng-cloak>
               <li class="active"><a href="#">Home</a></li>
+              <li class="divider-vertical" ng-show="inControl"></li>
+              <li><a href="#" onclick="$('.ui-draggable').draggable('enable');" ng-show="inControl">Enable Drag</a></li>
+              <li><a href="#" onclick="$('.ui-draggable').draggable('disable');" ng-show="inControl">Disable Drag</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#" onclick="$('.ui-draggable').draggable('enable');">Enable Drag</a></li>
-              <li><a href="#" onclick="$('.ui-draggable').draggable('disable');">Disable Drag</a></li>
-              <li class="divider-vertical"></li>
-              <li>
-                <a href="">In Control == {{inControl}}</a>
-              </li>
+              <li><a href="#" ng-click="takeControl()">Take Control</a></li>
             </ul>
             <ul class="nav pull-right">
               <li>
@@ -186,7 +184,7 @@
         </div>
 
         <div class="ui-layout-south">
-          <pre ng-bind-html-unsafe="syntaxHighlight(layout)"></pre>
+          <h2>Data here...</h2>
         </div>
 
     </div>
@@ -198,18 +196,15 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-    <script src="jquery.ui.touch-punch.min.js"></script>
-    <script src="angular-dragdrop.min.js"></script>
-    <script src="http://jobney-socket-test.nodejitsu.com/socket.io/socket.io.js"></script>
-    <script src="localStorageModule.js"></script>
 
-    <!--
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="libs/jquery.ui.touch-punch.min.js"></script>
+    <script src="libs/jquery.layout-latest.js"></script>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.0/underscore.string.min.js"></script>
+    <script src="http://settoon-location-events-1.nodejitsu.com/socket.io/socket.io.js"></script>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-    -->
-    <script src="jquery.layout-latest.js"></script>
-    <script src="app.js"></script>
+    <script src="app/app.js"></script>
+
+    <script src="app/controllers.js"></script>
+    <script src="app/services.js"></script>
+    <script src="app/directives/angular-dragdrop.js"></script>
 </html>
