@@ -48,13 +48,11 @@ $(document).ready(function () {
     myLayout.sizePane('west', 350);
     myLayout.sizePane('south', 350);
 
-    socket.on('open-panel', function(data){
-        console.log(arguments);
+    socket.on('open-panel', function(panel){
         myLayout.open(panel);
     });
 
-    socket.on('close-panel', function(data){
-        console.log(arguments);
+    socket.on('close-panel', function(panel){
         myLayout.close(panel);
     });
 
