@@ -270,10 +270,13 @@ angular.module('draggableBoxes').filter('thirds', function () {
             comment: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo'
         }];
 
+        $scope.inControl = true;
+
         // Socket.io stuff here...
 
         socket.on('data-update', function(data){
             var data = angular.copy(angular.fromJson(data));
+            $scope.inControl = false;
             $scope.$apply(function(){
                 $scope.layout = data;
             });
@@ -282,7 +285,9 @@ angular.module('draggableBoxes').filter('thirds', function () {
 
         $scope.saveVersion = function () {
             localStorageService.add('layout', JSON.stringify($scope.layout));
-            socket.emit('data', JSON.stringify(angular.copy($scope.layout)));
+            if ($scope.inControl) {
+                socket.emit('data', JSON.stringify(angular.copy($scope.layout)));
+            };
         };
 
         $scope.loadVersion = function () {
