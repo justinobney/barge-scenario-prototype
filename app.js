@@ -21,18 +21,18 @@ $(document).ready(function () {
         },
         west: {
             onopen: function(panel){
-                socket.emit('open-panel', panel);
+                socket.emit('panel-open', panel);
             },
             onclose: function(panel){
-                socket.emit('close-panel', panel);
+                socket.emit('panel-close', panel);
             }
         },
         east: {
             onopen: function(panel){
-                socket.emit('open-panel', panel);
+                socket.emit('panel-open', panel);
             },
             onclose: function(panel){
-                socket.emit('close-panel', panel);
+                socket.emit('panel-close', panel);
             }
         },
         south__initClosed: true,
@@ -49,10 +49,12 @@ $(document).ready(function () {
     myLayout.sizePane('south', 350);
 
     socket.on('open-panel', function(data){
+        console.log(arguments);
         myLayout.open(panel);
     });
 
     socket.on('close-panel', function(data){
+        console.log(arguments);
         myLayout.close(panel);
     });
 
