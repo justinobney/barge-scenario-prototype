@@ -287,3 +287,44 @@ angularLocalStorage.service('localStorageService', [
   };
 
 }]);
+
+(function () {
+    // Service object
+    var zohoService = function($http) {
+        var exports = {};
+        var baseUrl = 'http://settoon-location-events-1.nodejitsu.com/';
+
+        exports.getBarges = function() {
+            var url = baseUrl + 'barges/';
+
+            return $http.get(url).then(function(response) {
+                return response.data;
+            });
+        };
+
+        exports.getVessels = function() {
+            var url = baseUrl + 'vessels/';
+
+            return $http.get(url).then(function(response) {
+                return response.data;
+            });
+        };
+
+        exports.getWorkspaces = function() {
+            var url = baseUrl + 'workspaces/';
+
+            return $http.get(url).then(function(response) {
+                return response.data;
+            });
+        };
+
+        return exports;
+    };
+
+    // Injected dependancies
+    zohoService.$inject = ['$http'];
+
+    // Service creation
+    angular.module('Services', [])
+        .factory('zohoService', zohoService);
+})();

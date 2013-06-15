@@ -80,4 +80,4 @@ $(document).ready(function () {
 
 });
 
-angular.module('draggableBoxes', ['ngDragDrop', 'LocalStorageModule','btford.socket-io']);
+angular.module('draggableBoxes', ['ngDragDrop', 'LocalStorageModule','btford.socket-io', 'Services']);

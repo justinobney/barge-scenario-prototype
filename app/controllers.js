@@ -1,6 +1,6 @@
 
 (function () {
-    var scenarioController = function ($scope, localStorageService, socket) {
+    var scenarioController = function ($scope, localStorageService, socket, zohoService) {
         var original = {
             "dock": {
                 "workAreas": [
@@ -162,7 +162,7 @@
                 ]
             },
             "id": 1
-        }
+        };
 
         $scope.comments = [{
             id: 1,
@@ -237,11 +237,8 @@
             if ($scope.inControl)
                 return;
 
-            var data = angular.copy(angular.fromJson(data));
+            $scope.layout = angular.copy(angular.fromJson(data));
 
-            $scope.$apply(function(){
-                $scope.layout = data;
-            });
         });
         // End Socket.io
 
