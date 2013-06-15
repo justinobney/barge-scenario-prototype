@@ -185,7 +185,10 @@
         $scope.saveVersion = function () {
             localStorageService.add('layout', JSON.stringify($scope.layout));
 
-            //socket.emit('data', JSON.stringify(angular.copy($scope.layout)));
+            if (! $scope.inControl)
+                return;
+
+            socket.emit('data', JSON.stringify(angular.copy($scope.layout)));
         };
 
         $scope.loadVersion = function () {
@@ -230,13 +233,16 @@
             $('.ui-draggable').draggable('disable');
         });
 
-        // socket.on('data-update', function(data){
-        //     var data = angular.copy(angular.fromJson(data));
+        socket.on('data-update', function(data){
+            if ($scope.inControl)
+                return;
 
-        //     $scope.$apply(function(){
-        //         $scope.layout = data;
-        //     });
-        // });
+            var data = angular.copy(angular.fromJson(data));
+
+            $scope.$apply(function(){
+                $scope.layout = data;
+            });
+        });
         // End Socket.io
 
         $scope.loadVersion();
