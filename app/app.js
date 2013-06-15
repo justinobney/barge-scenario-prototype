@@ -37,6 +37,8 @@ $(document).ready(function () {
         west: panelHandlers,
         east: panelHandlers,
         south: panelHandlers,
+        east__initClosed: true,
+        west__initClosed: true,
         south__initClosed: true,
         togglerLength_open: 150,
         togglerLength_closed: 150,
