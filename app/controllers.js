@@ -179,6 +179,7 @@
         $scope.takeControl = function(){
             $scope.inControl = true;
             $('.ui-draggable').draggable('enable');
+            socket.emit('take-control', {});
         }
 
         $scope.saveVersion = function () {
@@ -223,6 +224,11 @@
         }, true);
 
         // Socket.io stuff here...
+
+        socket.on('control-taken', function () {
+            $scope.inControl = false;
+            $('.ui-draggable').draggable('disable');
+        });
 
         // socket.on('data-update', function(data){
         //     var data = angular.copy(angular.fromJson(data));
