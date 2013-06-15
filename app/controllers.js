@@ -8,24 +8,32 @@
                         "id": 4,
                         "title": "Not Working",
                         "units": [{
-                            "boat": "Fred",
+                            "boat": {name: "Fred"},
                             "barges": []
                         }]
                     }, {
                         "id": 2,
                         "title": "New Construction",
                         "units": [{
-                            "boat": "Charlotte",
+                            "boat": {name: "Charlotte"},
                             "barges": []
                         }, {
-                            "boat": "Dudley",
+                            "boat": null,
+                            "barges": []
+                        },
+                        {
+                            "boat": null,
+                            "barges": []
+                        },
+                        {
+                            "boat": null,
                             "barges": []
                         }]
                     }, {
                         "id": 2,
                         "title": "Unavailable Storage Barges",
                         "units": [{
-                            "boat": "Megan",
+                            "boat": {name: "Megan"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -36,7 +44,7 @@
                         "id": 1,
                         "title": "Chevron",
                         "units": [{
-                            "boat": "Cathy",
+                            "boat": {name: "Cathy"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -47,7 +55,7 @@
                         "id": 3,
                         "title": "Plains",
                         "units": [{
-                            "boat": "Albert",
+                            "boat": {name: "Albert"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -63,7 +71,7 @@
                         "id": 5,
                         "title": "Valero",
                         "units": [{
-                            "boat": "Austin",
+                            "boat": {name: "Austin"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -74,7 +82,7 @@
                         "id": 3,
                         "title": "Spot",
                         "units": [{
-                            "boat": "Ryan",
+                            "boat": {name: "Ryan"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -88,7 +96,7 @@
                         "id": 2,
                         "title": "Saltwater",
                         "units": [{
-                            "boat": "Geneveve",
+                            "boat": {name: "Geneveve"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -101,7 +109,7 @@
                         "id": 4,
                         "title": "Citco",
                         "units": [{
-                            "boat": "Marry",
+                            "boat": {name: "Marry"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -116,7 +124,7 @@
                         "id": 5,
                         "title": "Nigeria",
                         "units": [{
-                            "boat": "Emily",
+                            "boat": {name: "Emily"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -132,7 +140,7 @@
                         "id": 1,
                         "title": "Shell",
                         "units": [{
-                            "boat": "Francis",
+                            "boat": {name: "Francis"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -151,7 +159,7 @@
                         "id": 1,
                         "title": "Working Storage Barges",
                         "units": [{
-                            "boat": "Jane P",
+                            "boat": {name: "Jane P"},
                             "barges": [{
                                 "name": "barge 1"
                             }, {
@@ -161,6 +169,18 @@
                     }
                 ]
             },
+            "boats": [
+                {name: "Sherly"},
+                {name: "Ms. Tiffany"},
+                {name: "Some other name"}
+            ],
+            "barges": [
+                { "name": "barge 1" },
+                { "name": "barge 2" },
+                { "name": "barge 3" },
+                { "name": "barge 4" },
+                { "name": "barge 5" },
+            ],
             "id": 1
         };
 

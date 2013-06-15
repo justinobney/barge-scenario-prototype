@@ -11,6 +11,15 @@ $(document).ready(function () {
     var $Container = $('#container');
     $Container.height($(window).height() - $Container.offset().top);
 
+    var panelHandlers = {
+        onopen: function(panel){
+            socket.emit('panel-open', panel);
+        },
+        onclose: function(panel){
+            socket.emit('panel-close', panel);
+        }
+    }
+
     // NOW create the layout
     myLayout = $('#container').layout({
         defaults: {
@@ -19,28 +28,15 @@ $(document).ready(function () {
             spacing_closed: 14,
             spacing_open: 14
         },
-        west: {
-            onopen: function(panel){
-                socket.emit('panel-open', panel);
-            },
-            onclose: function(panel){
-                socket.emit('panel-close', panel);
-            }
-        },
-        east: {
-            onopen: function(panel){
-                socket.emit('panel-open', panel);
-            },
-            onclose: function(panel){
-                socket.emit('panel-close', panel);
-            }
-        },
+        west: panelHandlers,
+        east: panelHandlers,
+        south: panelHandlers,
         south__initClosed: true,
         togglerLength_open: 150,
         togglerLength_closed: 150,
         onload_end: function(){
             var minHeight = parseInt($('.ui-layout-center').height() * 0.95);
-            $('#content .span4.ui-droppable').css('min-height', minHeight + 'px');
+            $('#content .span4.workspace-column').css('min-height', minHeight + 'px');
         }
     });
 
@@ -70,7 +66,7 @@ $(document).ready(function () {
         $('body').removeClass();
     };
 
-    jQuery(document).on('dragstart', '.barge, .unit, .workspace-container', handleDragStart);
+    jQuery(document).on('dragstart', '.boat, .barge, .unit, .workspace-container', handleDragStart);
 
     jQuery(document).on('drop', handleDragStop);
 

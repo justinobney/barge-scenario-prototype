@@ -43,6 +43,7 @@ html, body {
     background: #5E5EFF
 }
 .workspace-area h3 {
+    border-radius: 5px;
     padding: 0 5px;
     text-align: center;
     color: #FFF;
@@ -93,7 +94,7 @@ html, body {
 .dragging-workspace .ui-droppable, .dragging-workspace .ui-droppable {
     background: #FFFFE0;
 }
-.dragging-unit .unit-container, .dragging-barge .unit-container .ui-droppable {
+.dragging-unit .unit-container, .dragging-barge .barge-placeholder.ui-droppable, .dragging-boat .boat-placeholder.ui-droppable {
     border: dashed 1px !important;
     margin: 2px;
     background: #FFFFE0;
@@ -123,7 +124,7 @@ html, body {
     padding: 15px;
 }
 
-#content .span4.ui-droppable {
+#content .span4.workspace-column.ui-droppable {
     padding-bottom: 100px;
 }
 
@@ -198,4 +199,9 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
     background-color: rgba(0, 0, 0, 0);
     color: #FFF;
     text-decoration: none;
+}
+
+.boat-dock .boat {
+    display: inline;
+    margin-right: 3px;
 }
