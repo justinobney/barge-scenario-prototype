@@ -24,7 +24,7 @@
               <li><a href="#" onclick="$('.ui-draggable').draggable('enable');" ng-show="inControl">Enable Drag</a></li>
               <li><a href="#" onclick="$('.ui-draggable').draggable('disable');" ng-show="inControl">Disable Drag</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#" ng-click="takeControl()">Take Control</a></li>
+              <li><a href="#" ng-click="takeControl()" ng-hide="inControl">Take Control</a></li>
             </ul>
             <ul class="nav pull-right">
               <li>
