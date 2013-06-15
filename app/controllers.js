@@ -1,7 +1,6 @@
 
 (function () {
     var scenarioController = function ($scope, localStorageService, socket, zohoService) {
-
         $scope.comments = [{
             id: 1,
             name: 'Aaron Landry',
@@ -19,6 +18,24 @@
             $('.ui-draggable').draggable('enable');
             socket.emit('take-control', {});
         }
+
+        $scope.saveVersion = function () {
+            localStorageService.add('layout', JSON.stringify($scope.layout));
+
+            if (! $scope.inControl)
+                return;
+
+            socket.emit('data', JSON.stringify(angular.copy($scope.layout)));
+        };
+
+        $scope.loadVersion = function () {
+            if (localStorageService.get('layout')) {
+                $scope.layout = JSON.parse(localStorageService.get('layout'));
+            } else {
+                $scope.resetVersion();
+            }
+            $scope.layout = JSON.parse(localStorageService.get('layout'));
+        };
 
         $scope.resetVersion = function () {
             $scope.layout.workSpace.workArea1 = [];
