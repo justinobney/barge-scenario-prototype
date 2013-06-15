@@ -202,6 +202,8 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 }
 
 .boat-dock .boat {
+    width: initial;
+    float: left;
     display: inline;
-    margin-right: 3px;
+    margin: 2px;
 }

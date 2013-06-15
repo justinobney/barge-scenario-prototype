@@ -6,6 +6,85 @@
 
 'use strict';
 
+(function () {
+    // Service object
+    var zohoService = function($http, _) {
+        var exports = {};
+        var baseUrl = 'http://settoon-location-events-1.nodejitsu.com/';
+
+        exports.getBarges = function() {
+            var url = baseUrl + 'barges/';
+
+            return $http.get(url).then(function(response) {
+              var barges = response.data.Barges;
+              var idx = 0;
+
+              return _.map(barges, function(barge){
+                return {
+                  "id": barge.ID,
+                  "name": (barge.Name) ? barge.Name : 'NOT SET'
+                };
+              });
+            });
+        };
+
+        exports.getVessels = function() {
+            var url = baseUrl + 'vessels/';
+
+            return $http.get(url).then(function(response) {
+              var vessels = response.data.Vessels;
+              var idx = 0;
+
+              return _.map(vessels, function(vessel){
+                return {
+                  "id": idx++,
+                  "name": vessel.M_V_Name
+                };
+              });
+            });
+        };
+
+        exports.getWorkspaces = function() {
+            var url = baseUrl + 'workspaces/';
+
+            return $http.get(url).then(function(response) {
+              var workspaces = response.data.Workspaces;
+              var idx = 0;
+
+              return _.map(workspaces, function(workspace){
+                return {
+                  "id": idx++,
+                  "title": workspace.Name,
+                  "units": [
+                    { "boat": null, "barges": [] },
+                    { "boat": null, "barges": [] },
+                    { "boat": null, "barges": [] }
+                  ],
+                  "inactive": workspace.Inactive,
+                  "allowBarges": workspace.Allow_Barges,
+                  "allowVessels": workspace.Allow_Vessels
+                };
+              });
+            });
+        };
+
+        return exports;
+    };
+
+    // Injected dependancies
+    zohoService.$inject = ['$http', 'underscore'];
+
+    // Service creation
+    angular.module('Services', [])
+        .factory('zohoService', zohoService);
+})();
+
+
+var underscore = angular.module('underscore', []);
+underscore.factory('underscore', function() {
+  return window._; // assumes underscore has already been loaded on the page
+});
+
 angular.module('btford.socket-io', [])
   .factory('socket', function ($rootScope) {
     var socket = io.connect(io_location);
@@ -287,44 +366,3 @@ angularLocalStorage.service('localStorageService', [
   };
 
 }]);
-
-(function () {
-    // Service object
-    var zohoService = function($http) {
-        var exports = {};
-        var baseUrl = 'http://settoon-location-events-1.nodejitsu.com/';
-
-        exports.getBarges = function() {
-            var url = baseUrl + 'barges/';
-
-            return $http.get(url).then(function(response) {
-                return response.data;
-            });
-        };
-
-        exports.getVessels = function() {
-            var url = baseUrl + 'vessels/';
-
-            return $http.get(url).then(function(response) {
-                return response.data;
-            });
-        };
-
-        exports.getWorkspaces = function() {
-            var url = baseUrl + 'workspaces/';
-
-            return $http.get(url).then(function(response) {
-                return response.data;
-            });
-        };
-
-        return exports;
-    };
-
-    // Injected dependancies
-    zohoService.$inject = ['$http'];
-
-    // Service creation
-    angular.module('Services', [])
-        .factory('zohoService', zohoService);
-})();

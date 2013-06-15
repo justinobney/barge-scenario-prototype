@@ -1,188 +1,6 @@
 
 (function () {
     var scenarioController = function ($scope, localStorageService, socket, zohoService) {
-        var original = {
-            "dock": {
-                "workAreas": [
-                    {
-                        "id": 4,
-                        "title": "Not Working",
-                        "units": [{
-                            "boat": {name: "Fred"},
-                            "barges": []
-                        }]
-                    }, {
-                        "id": 2,
-                        "title": "New Construction",
-                        "units": [{
-                            "boat": {name: "Charlotte"},
-                            "barges": []
-                        }, {
-                            "boat": null,
-                            "barges": []
-                        },
-                        {
-                            "boat": null,
-                            "barges": []
-                        },
-                        {
-                            "boat": null,
-                            "barges": []
-                        }]
-                    }, {
-                        "id": 2,
-                        "title": "Unavailable Storage Barges",
-                        "units": [{
-                            "boat": {name: "Megan"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }]
-                        }]
-                    }, {
-                        "id": 1,
-                        "title": "Chevron",
-                        "units": [{
-                            "boat": {name: "Cathy"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }]
-                        }]
-                    }, {
-                        "id": 3,
-                        "title": "Plains",
-                        "units": [{
-                            "boat": {name: "Albert"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }]
-                        }]
-                    }
-                ]
-            },
-            "workSpace": {
-                "workArea1": [
-                    {
-                        "id": 5,
-                        "title": "Valero",
-                        "units": [{
-                            "boat": {name: "Austin"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }]
-                        }]
-                    }, {
-                        "id": 3,
-                        "title": "Spot",
-                        "units": [{
-                            "boat": {name: "Ryan"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }]
-                        }]
-                    }
-                ],
-                "workArea2": [
-                    {
-                        "id": 2,
-                        "title": "Saltwater",
-                        "units": [{
-                            "boat": {name: "Geneveve"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }, {
-                                "name": "barge 2"
-                            }]
-                        }]
-                    }, {
-                        "id": 4,
-                        "title": "Citco",
-                        "units": [{
-                            "boat": {name: "Marry"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }, {
-                                "name": "barge 2"
-                            }, {
-                                "name": "barge 1"
-                            }]
-                        }]
-                    }, {
-                        "id": 5,
-                        "title": "Nigeria",
-                        "units": [{
-                            "boat": {name: "Emily"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }, {
-                                "name": "barge 3"
-                            }]
-                        }]
-                    }
-                ],
-                "workArea3": [
-                    {
-                        "id": 1,
-                        "title": "Shell",
-                        "units": [{
-                            "boat": {name: "Francis"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }, {
-                                "name": "barge 2"
-                            }, {
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 4"
-                            }, {
-                                "name": "barge 1"
-                            }]
-                        }]
-                    }, {
-                        "id": 1,
-                        "title": "Working Storage Barges",
-                        "units": [{
-                            "boat": {name: "Jane P"},
-                            "barges": [{
-                                "name": "barge 1"
-                            }, {
-                                "name": "barge 2"
-                            }]
-                        }]
-                    }
-                ]
-            },
-            "boats": [
-                {name: "Sherly"},
-                {name: "Ms. Tiffany"},
-                {name: "Some other name"}
-            ],
-            "barges": [
-                { "name": "barge 1" },
-                { "name": "barge 2" },
-                { "name": "barge 3" },
-                { "name": "barge 4" },
-                { "name": "barge 5" },
-            ],
-            "id": 1
-        };
 
         $scope.comments = [{
             id: 1,
@@ -202,26 +20,22 @@
             socket.emit('take-control', {});
         }
 
-        $scope.saveVersion = function () {
-            localStorageService.add('layout', JSON.stringify($scope.layout));
-
-            if (! $scope.inControl)
-                return;
-
-            socket.emit('data', JSON.stringify(angular.copy($scope.layout)));
-        };
-
-        $scope.loadVersion = function () {
-            if (localStorageService.get('layout')) {
-                $scope.layout = JSON.parse(localStorageService.get('layout'));
-            } else {
-                $scope.layout = original;
-            }
-            $scope.layout = JSON.parse(localStorageService.get('layout'));
-        };
-
         $scope.resetVersion = function () {
-            $scope.layout = original;
+            $scope.layout.workSpace.workArea1 = [];
+            $scope.layout.workSpace.workArea2 = [];
+            $scope.layout.workSpace.workArea3 = [];
+
+            zohoService.getWorkspaces().then(function(data){
+                $scope.layout.dock.workAreas = data;
+            });
+
+            zohoService.getVessels().then(function(data){
+                $scope.layout.boats = data;
+            });
+
+            zohoService.getBarges().then(function(data){
+                $scope.layout.barges = data;
+            });
         };
 
         $scope.addComment = function () {
