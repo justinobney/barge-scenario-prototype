@@ -197,7 +197,7 @@
         $scope.inControl = false;
 
         $scope.takeControl = function(){
-            $scope.inControl = true;
+            $scope.inControl = window.inControl = true;
             $('.ui-draggable').draggable('enable');
             socket.emit('take-control', {});
         }
@@ -249,7 +249,7 @@
         // Socket.io stuff here...
 
         socket.on('control-taken', function () {
-            $scope.inControl = false;
+            $scope.inControl = window.inControl = false;
             $('.ui-draggable').draggable('disable');
         });
 
@@ -265,7 +265,7 @@
         $scope.loadVersion();
     };
 
-    scenarioController.$inject = ['$scope', 'localStorageService', 'socket'];
+    scenarioController.$inject = ['$scope', 'localStorageService', 'socket','zohoService'];
 
     angular.module('draggableBoxes')
         .controller('ScenarioController', scenarioController);

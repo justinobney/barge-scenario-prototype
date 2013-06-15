@@ -13,9 +13,15 @@ $(document).ready(function () {
 
     var panelHandlers = {
         onopen: function(panel){
+            if( ! window.inControl )
+                return;
+
             socket.emit('panel-open', panel);
         },
         onclose: function(panel){
+            if( ! window.inControl )
+                return;
+
             socket.emit('panel-close', panel);
         }
     }
