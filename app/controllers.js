@@ -1,6 +1,6 @@
 
 (function () {
-    var scenarioController = function ($scope, localStorageService, socket, zohoService) {
+    var scenarioController = function ($scope, localStorageService, socket, zohoService, $q) {
         $scope.comments = [{
             id: 1,
             name: 'Aaron Landry',
@@ -41,18 +41,47 @@
             $scope.layout.workSpace.workArea1 = [];
             $scope.layout.workSpace.workArea2 = [];
             $scope.layout.workSpace.workArea3 = [];
+            $scope.layout.dock.workAreas = [];
 
-            zohoService.getWorkspaces().then(function(data){
-                $scope.layout.dock.workAreas = data;
-            });
-
-            zohoService.getVessels().then(function(data){
+            var req1 = zohoService.getVessels().then(function(data){
                 $scope.layout.boats = data;
             });
 
-            zohoService.getBarges().then(function(data){
+            var req2 = zohoService.getBarges().then(function(data){
                 $scope.layout.barges = data;
             });
+
+            $q.all([req1, req2]).then(function(){
+                zohoService.getWorkspaces().then(function(data){
+                    var randWorkspace = [
+                        $scope.layout.workSpace.workArea1,
+                        $scope.layout.workSpace.workArea2,
+                        $scope.layout.workSpace.workArea3,
+                        $scope.layout.dock.workAreas
+                    ];
+
+                    _.each(data, function(ws){
+                        for (var i = 0; i <3; i++) {
+                            var numOfBarges = _.random(7);
+                            var barges = [];
+
+                            for (var j = numOfBarges; j >= 0; j--) {
+                                var bargeIdx = _.random($scope.layout.barges.length);
+                                var barge = $scope.layout.barges.splice(bargeIdx, 1);
+                                ws.units[i].barges.push(barge[0]);
+                            }
+
+                            var boatIdx = _.random($scope.layout.boats.length);
+                            var boat = $scope.layout.boats.splice(boatIdx, 1);
+
+                            ws.units[i].boat = boat[0];
+                        };
+
+                        var wsIdx = _.random(3);
+                        randWorkspace[wsIdx].push(ws);
+                    }) ;
+                });
+            })
         };
 
         $scope.addComment = function () {
@@ -96,7 +125,7 @@
         $scope.loadVersion();
     };
 
-    scenarioController.$inject = ['$scope', 'localStorageService', 'socket','zohoService'];
+    scenarioController.$inject = ['$scope', 'localStorageService', 'socket','zohoService', '$q'];
 
     angular.module('draggableBoxes')
         .controller('ScenarioController', scenarioController);

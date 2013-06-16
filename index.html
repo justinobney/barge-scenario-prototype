@@ -59,7 +59,7 @@
                                   ng-model="unit.boat">{{unit.boat.name}}</div>
                               </div>
                               <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
                                   data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                               </div>
                             </div>
@@ -87,7 +87,7 @@
                                   ng-model="unit.boat">{{unit.boat.name}}</div>
                               </div>
                               <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
                                   data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                               </div>
                             </div>
@@ -115,7 +115,7 @@
                                   ng-model="unit.boat">{{unit.boat.name}}</div>
                               </div>
                               <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
                                   data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                               </div>
                             </div>
@@ -150,7 +150,7 @@
                               ng-model="unit.boat">{{unit.boat.name}}</div>
                             </div>
                           <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                            <span class="label barge" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                            <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
                             data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                           </div>
                         </div>

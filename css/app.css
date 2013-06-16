@@ -206,3 +206,26 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
     display: inline;
     margin: 2px;
 }
+
+/*.barge.cssGather {
+    background-color: #E20000;
+}
+.barge.css-None- {
+    background-color: #F0F82A;
+    color: #929191;
+}
+.barge.cssStorage {
+    background-color: #333;
+    color: #FFF;
+}
+.barge.cssLarge {
+    background-color: blue;
+}
+.barge.cssGather {
+    background-color: #ECECEC;
+    color: #000;
+}*/
+
+.barge {
+    text-shadow: none;
+}

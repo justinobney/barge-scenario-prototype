@@ -23,7 +23,7 @@
                 return {
                   "id": barge.ID,
                   "name": (barge.Name) ? barge.Name : 'NOT SET',
-                  "class": barge.Projection_Group
+                  "class": 'css' + barge.Projection_Group
                 };
               });
             });
