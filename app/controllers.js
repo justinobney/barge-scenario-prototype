@@ -1,6 +1,19 @@
 
 (function () {
     var scenarioController = function ($scope, localStorageService, socket, zohoService, $q) {
+        $scope.layout = {
+            workSpace: {
+                workArea1: [],
+                workArea2: [],
+                workArea3: []
+            },
+            dock: {
+                workAreas: []
+            },
+            boats: [],
+            barges: []
+        };
+
         $scope.comments = [{
             id: 1,
             name: 'Aaron Landry',
@@ -34,7 +47,6 @@
             } else {
                 $scope.resetVersion();
             }
-            $scope.layout = JSON.parse(localStorageService.get('layout'));
         };
 
         $scope.resetVersion = function () {
