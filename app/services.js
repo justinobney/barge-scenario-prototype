@@ -22,7 +22,8 @@
               return _.map(barges, function(barge){
                 return {
                   "id": barge.ID,
-                  "name": (barge.Name) ? barge.Name : 'NOT SET'
+                  "name": (barge.Name) ? barge.Name : 'NOT SET',
+                  "class": barge.Projection_Group
                 };
               });
             });

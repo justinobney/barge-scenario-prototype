@@ -39,10 +39,10 @@ html, body {
     border: solid 2px #5E5EFF;
 }
 
-.dock .workspace-area h3 {
+.dock .workspace-area h4 {
     background: #5E5EFF
 }
-.workspace-area h3 {
+.workspace-area h4 {
     border-radius: 5px;
     padding: 0 5px;
     text-align: center;
@@ -101,9 +101,8 @@ html, body {
     border-radius: 5px;
 }
 
-.workspace-area h3 .icon-move {
+.workspace-area h4 .icon-move {
     float: left;
-    margin-top: 12px;
 }
 
 .icon-move, .barge {
