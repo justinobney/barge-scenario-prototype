@@ -72,6 +72,7 @@ html, body {
 
 .boat {
     width: 90%;
+    white-space: normal;
 }
 
 .barge {
