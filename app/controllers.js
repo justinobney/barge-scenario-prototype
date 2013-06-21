@@ -80,7 +80,10 @@
                             for (var j = numOfBarges; j >= 0; j--) {
                                 var bargeIdx = _.random($scope.layout.barges.length);
                                 var barge = $scope.layout.barges.splice(bargeIdx, 1);
-                                ws.units[i].barges.push(barge[0]);
+
+                                if (barge[0]) {
+                                    ws.units[i].barges.push(barge[0]);
+                                }
                             }
 
                             var boatIdx = _.random($scope.layout.boats.length);
@@ -93,7 +96,7 @@
                         randWorkspace[wsIdx].push(ws);
                     }) ;
                 });
-            })
+            });
         };
 
         $scope.addComment = function () {
