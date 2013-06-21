@@ -1,87 +1,85 @@
 "use strict";
 
-var myLayout;
-var io_location = 'http://settoon-location-events-1.nodejitsu.com:80';
+angular
+    .module('draggableBoxes', ['ngDragDrop', 'LocalStorageModule','btford.socket-io', 'Services', 'underscore', 'config'])
+    .config(['configSettings', function(configSettings){
+        var myLayout;
 
-$(document).ready(function () {
+        var socket = io.connect(configSettings.io_location);
 
-    var socket = io.connect(io_location);
+        var panelHandlers = {
+            onopen: function(panel){
+                if( ! window.inControl )
+                    return;
 
-    // first set a 'fixed height' on the container so it does not collapse...
-    var $Container = $('#container');
-    $Container.height($(window).height() - $Container.offset().top);
+                socket.emit('panel-open', panel);
+            },
+            onclose: function(panel){
+                if( ! window.inControl )
+                    return;
 
-    var panelHandlers = {
-        onopen: function(panel){
-            if( ! window.inControl )
-                return;
-
-            socket.emit('panel-open', panel);
-        },
-        onclose: function(panel){
-            if( ! window.inControl )
-                return;
-
-            socket.emit('panel-close', panel);
+                socket.emit('panel-close', panel);
+            }
         }
-    }
 
-    // NOW create the layout
-    myLayout = $('#container').layout({
-        defaults: {
-            fxName: "slide",
-            fxSpeed: "slow",
-            spacing_closed: 14,
-            spacing_open: 14
-        },
-        west: panelHandlers,
-        east: panelHandlers,
-        south: panelHandlers,
-        east__initClosed: true,
-        west__initClosed: true,
-        south__initClosed: true,
-        togglerLength_open: 150,
-        togglerLength_closed: 150,
-        onload_end: function(){
-            var minHeight = parseInt($('.ui-layout-center').height() * 0.95);
-            $('#content .span4.workspace-column').css('min-height', minHeight + 'px');
-        }
-    });
+        socket.on('open-panel', function(panel){
+            myLayout.open(panel);
+        });
 
-    myLayout.sizePane('east', 250);
-    myLayout.sizePane('west', 350);
-    myLayout.sizePane('south', 350);
+        socket.on('close-panel', function(panel){
+            myLayout.close(panel);
+        });
 
-    socket.on('open-panel', function(panel){
-        myLayout.open(panel);
-    });
+        var handleDragStart = function (evt) {
+            evt.stopPropagation();
+            var el = $(this);
+            var objectType = el.data('object-type');
+            $('body').addClass('dragging-' + objectType);
+        };
 
-    socket.on('close-panel', function(panel){
-        myLayout.close(panel);
-    });
+        var handleDragStop = function (evt) {
+            evt.stopPropagation();
+            $('body').removeClass();
+        };
 
-    $(window).unload(function(){ layoutState.save('myLayout') });
+        jQuery(document).on('dragstart', '.boat, .barge, .unit, .workspace-container', handleDragStart);
 
-    var handleDragStart = function (evt) {
-        evt.stopPropagation();
-        var el = $(this);
-        var objectType = el.data('object-type');
-        $('body').addClass('dragging-' + objectType);
-    };
+        jQuery(document).on('drop', handleDragStop);
 
-    var handleDragStop = function (evt) {
-        evt.stopPropagation();
-        $('body').removeClass();
-    };
+        $(function(){
+            // NOW create the layout
+            myLayout = $('#container').layout({
+                defaults: {
+                    fxName: "slide",
+                    fxSpeed: "slow",
+                    spacing_closed: 14,
+                    spacing_open: 14
+                },
+                west: panelHandlers,
+                east: panelHandlers,
+                south: panelHandlers,
+                east__initClosed: true,
+                west__initClosed: true,
+                south__initClosed: true,
+                togglerLength_open: 150,
+                togglerLength_closed: 150,
+                onload_end: function(){
+                    var minHeight = parseInt($('.ui-layout-center').height() * 0.95);
+                    $('#content .span4.workspace-column').css('min-height', minHeight + 'px');
+                }
+            });
 
-    jQuery(document).on('dragstart', '.boat, .barge, .unit, .workspace-container', handleDragStart);
+            myLayout.sizePane('east', 250);
+            myLayout.sizePane('west', 350);
+            myLayout.sizePane('south', 350);
 
-    jQuery(document).on('drop', handleDragStop);
+            // first set a 'fixed height' on the container so it does not collapse...
+            var $Container = $('#container');
+            $Container.height($(window).height() - $Container.offset().top);
+        });
 
-    setTimeout(function(){
-        $('.ui-draggable').draggable('disable');
-    },1500);
-
-});
-
-angular.module('draggableBoxes', ['ngDragDrop', 'LocalStorageModule','btford.socket-io', 'Services', 'underscore']);
+        setTimeout(function(){
+            $('.ui-draggable').draggable('disable');
+            myLayout.resizeAll();
+        },1500);
+    }]);

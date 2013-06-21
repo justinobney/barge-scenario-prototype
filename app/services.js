@@ -86,9 +86,9 @@ underscore.factory('underscore', function() {
   return window._; // assumes underscore has already been loaded on the page
 });
 
-angular.module('btford.socket-io', [])
-  .factory('socket', function ($rootScope) {
-    var socket = io.connect(io_location);
+angular.module('btford.socket-io', ['config'])
+  .factory('socket', function ($rootScope, configSettings) {
+    var socket = io.connect(configSettings.io_location);
     return {
       on: function (eventName, callback) {
         socket.on(eventName, function () {

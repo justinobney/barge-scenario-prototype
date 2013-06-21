@@ -43,7 +43,7 @@
               <div class="row-fluid">
                 <div class="span4 workspace-column" data-drop="true" data-jqyoui-options="{accept:'.workspace-container'}" jqyoui-droppable ng-model="layout.workSpace.workArea1">
                   <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workArea1" data-drag="true"
-                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workArea1">
+                    data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea, placeholder: true}" ng-model="layout.workSpace.workArea1">
                     <div class="workspace-area" envoc-collapse="{trigger: 'h4', target: '.unit-container'}">
                       <h4>
                         <i class="icon-move icon-white"></i> {{workArea.title}}
@@ -249,6 +249,7 @@
 
     <script src="app/app.js"></script>
 
+    <script src="app/config.js"></script>
     <script src="app/controllers.js"></script>
     <script src="app/services.js"></script>
     <script src="app/directives/directives.js"></script>
