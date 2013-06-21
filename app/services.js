@@ -21,7 +21,7 @@
 
               return _.map(barges, function(barge){
                 return {
-                  "id": barge.ID,
+                  "id": barge.ID + "_" + barge.Number + "_" + ++idx,
                   "name": (barge.Name) ? barge.Name : 'NOT SET',
                   "class": 'css' + barge.Projection_Group
                 };
