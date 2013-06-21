@@ -45,7 +45,10 @@
                   <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workArea1" data-drag="true"
                     data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workArea1">
                     <div class="workspace-area" envoc-collapse="{trigger: 'h4', target: '.unit-container'}">
-                      <h4><i class="icon-move icon-white"></i> {{workArea.title}}</h4>
+                      <h4>
+                        <i class="icon-move icon-white"></i> {{workArea.title}}
+                        <span class="badge pull-right">{{workArea.units.length}}</span>
+                      </h4>
                       <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
                         <ul>
                           <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
@@ -59,7 +62,7 @@
                                   ng-model="unit.boat">{{unit.boat.name}}</div>
                               </div>
                               <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges track by barge.id" data-drag="true" data-jqyoui-options
                                   data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                               </div>
                             </div>
@@ -73,7 +76,10 @@
                   <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workArea2" data-drag="true"
                     data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workArea2">
                     <div class="workspace-area" envoc-collapse="{'trigger': 'h4', 'target': '.unit-container'}">
-                      <h4><i class="icon-move icon-white"></i> {{workArea.title}}</h4>
+                      <h4>
+                        <i class="icon-move icon-white"></i> {{workArea.title}}
+                        <span class="badge pull-right">{{workArea.units.length}}</span>
+                      </h4>
                       <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
                         <ul>
                           <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
@@ -87,7 +93,7 @@
                                   ng-model="unit.boat">{{unit.boat.name}}</div>
                               </div>
                               <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges track by barge.id" data-drag="true" data-jqyoui-options
                                   data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                               </div>
                             </div>
@@ -101,7 +107,10 @@
                   <div class="workspace-container" ng-repeat="workArea in layout.workSpace.workArea3" data-drag="true"
                     data-object-type="workspace" data-jqyoui-options jqyoui-draggable="{animate:false, index: $index, item: workArea}" ng-model="layout.workSpace.workArea3">
                     <div class="workspace-area" envoc-collapse="{'trigger': 'h4', 'target': '.unit-container'}">
-                      <h4><i class="icon-move icon-white"></i> {{workArea.title}}</h4>
+                      <h4>
+                        <i class="icon-move icon-white"></i> {{workArea.title}}
+                        <span class="badge pull-right">{{workArea.units.length}}</span>
+                      </h4>
                       <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
                         <ul>
                           <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
@@ -115,7 +124,7 @@
                                   ng-model="unit.boat">{{unit.boat.name}}</div>
                               </div>
                               <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                                <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges track by barge.id" data-drag="true" data-jqyoui-options
                                   data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                               </div>
                             </div>
@@ -136,7 +145,10 @@
               <div class="workspace-container" ng-repeat="workArea in layout.dock.workAreas" data-drag="true" data-jqyoui-options
                 data-object-type="workspace" jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.dock.workAreas">
                 <div class="workspace-area" envoc-collapse="{'trigger': 'h4', 'target': '.unit-container'}">
-                  <h4><i class="icon-move icon-white"></i> {{workArea.title}}</h4>
+                  <h4>
+                    <i class="icon-move icon-white"></i> {{workArea.title}}
+                    <span class="badge pull-right">{{workArea.units.length}}</span>
+                  </h4>
                   <div class="unit-container" data-drop="true" data-jqyoui-options="{accept:'.unit'}" jqyoui-droppable ng-model="workArea.units">
                     <ul>
                       <li ng-repeat="unit in workArea.units" class="unit" data-drag="true" data-jqyoui-options
@@ -150,7 +162,7 @@
                               ng-model="unit.boat">{{unit.boat.name}}</div>
                             </div>
                           <div class="span7 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="unit.barges">
-                            <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges" data-drag="true" data-jqyoui-options
+                            <span class="label barge" ng-class="barge.class" ng-repeat="barge in unit.barges track by barge.id" data-drag="true" data-jqyoui-options
                             data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="unit.barges">{{barge.name}}</span>
                           </div>
                         </div>
@@ -209,7 +221,7 @@
                 <div class="workspace-area" envoc-collapse="{trigger: 'h4', target: '.unit-container'}">
                   <h4>Barges</h4>
                   <div class="span12 barge-placeholder" data-drop="true" data-jqyoui-options="{accept:'.barge'}" jqyoui-droppable ng-model="layout.barges">
-                    <span class="label barge" ng-repeat="barge in layout.barges" data-drag="true" data-jqyoui-options
+                    <span class="label barge" ng-repeat="barge in layout.barges track by barge.id" data-drag="true" data-jqyoui-options
                     data-object-type="barge" jqyoui-draggable="{animate:false, index: $index}" ng-model="layout.barges">{{barge.name}}</span>
                   </div>
                   <div class="clearfix"></div>
@@ -226,7 +238,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 

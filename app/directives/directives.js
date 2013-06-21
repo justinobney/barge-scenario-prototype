@@ -5,7 +5,6 @@
         return {
             restrict: 'A',
             link: function (scope, elem, attrs) {
-                return;
                 scope.collapsed = false;
                 var _elem = elem;
                 var _attrs = attrs;
